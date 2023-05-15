@@ -49,6 +49,7 @@ require('packer').startup(function()
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  use 'voldikss/vim-floaterm'
 end)
 
 -- LSP config
@@ -75,3 +76,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', 'gD', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="tab"})<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<leader>ft', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+
+
+-- floaterm
+vim.g.floaterm_keymap_toggle = '<leader>tt'
