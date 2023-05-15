@@ -14,7 +14,12 @@ require("nvim-tree").setup()
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
@@ -28,6 +33,8 @@ require('packer').startup(function()
   use 'raimondi/delimitmate'
 
   use 'airblade/vim-gitgutter'
+
+  use 'tpope/vim-sleuth'
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -44,12 +51,17 @@ require('packer').startup(function()
 
 end)
 
-
+-- LSP config
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "tsserver", "gopls" }
+})
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.tsserver.setup{}
 
 vim.opt.number = true
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-frappe"
 
 vim.g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
 
@@ -62,3 +74,4 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
 vim.keymap.set('n', 'gD', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="tab"})<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>ft', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
