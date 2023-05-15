@@ -83,3 +83,9 @@ vim.api.nvim_set_keymap('n', '<leader>ft', ':NvimTreeToggle<CR>', {noremap = tru
 
 -- floaterm
 vim.g.floaterm_keymap_toggle = '<leader>tt'
+
+-- Window bindings
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-W><C-L>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-W><C-K>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-W><C-J>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-W><C-H>', {noremap=true})
