@@ -7,9 +7,13 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
+vim.opt.cursorline = true
 
+require("nvim-tree").setup {
+	update_focused_file = {
+		enable = true
+	}
+}
 
 local use = require('packer').use
 require('packer').startup(function()
@@ -27,14 +31,15 @@ require('packer').startup(function()
   use 'deoplete-plugins/deoplete-lsp'
 
   use 'fatih/vim-go'
-
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use 'raimondi/delimitmate'
-
+  use 'christoomey/vim-tmux-navigator'
   use 'airblade/vim-gitgutter'
-
+  use 'ervandew/supertab'
   use 'tpope/vim-sleuth'
+  use 'junegunn/vim-easy-align'
+  use 'voldikss/vim-floaterm'
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -48,8 +53,6 @@ require('packer').startup(function()
 	  },
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-
-  use 'voldikss/vim-floaterm'
 end)
 
 -- LSP config
@@ -84,8 +87,15 @@ vim.api.nvim_set_keymap('n', '<leader>ft', ':NvimTreeToggle<CR>', {noremap = tru
 -- floaterm
 vim.g.floaterm_keymap_toggle = '<leader>tt'
 
--- Window bindings
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-W><C-L>', {noremap=true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-W><C-K>', {noremap=true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-W><C-J>', {noremap=true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-W><C-H>', {noremap=true})
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+vim.cmd [[set mouse=a]]
+
+local set = vim.opt -- set options
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.completeopt = menu
