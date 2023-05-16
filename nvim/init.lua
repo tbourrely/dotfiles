@@ -58,13 +58,14 @@ end)
 -- LSP config
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "tsserver", "gopls", "bashls", "dockerls", "yamlls" }
+    ensure_installed = { "tsserver", "gopls", "bashls", "dockerls", "yamlls", "eslint" }
 })
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.dockerls.setup{}
 require'lspconfig'.yamlls.setup{}
+require'lspconfig'.eslint.setup{}
 
 vim.opt.number = true
 
