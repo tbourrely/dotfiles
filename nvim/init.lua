@@ -27,19 +27,25 @@ require('packer').startup(function()
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  use {'Shougo/deoplete.nvim', run = ':UpdateRemotePlugins'}
-  use 'deoplete-plugins/deoplete-lsp'
-
   use 'fatih/vim-go'
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use 'raimondi/delimitmate'
   use 'christoomey/vim-tmux-navigator'
   use 'airblade/vim-gitgutter'
-  use 'ervandew/supertab'
   use 'tpope/vim-sleuth'
   use 'junegunn/vim-easy-align'
   use 'voldikss/vim-floaterm'
+
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/nvim-cmp'
+
+  use 'hrsh7th/vim-vsnip'
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -55,24 +61,10 @@ require('packer').startup(function()
   }
 end)
 
--- LSP config
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "tsserver", "gopls", "bashls", "dockerls", "yamlls", "eslint" }
-})
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.yamlls.setup{}
-require'lspconfig'.eslint.setup{}
 
 vim.opt.number = true
 
 vim.cmd.colorscheme "catppuccin-frappe"
-
-vim.g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
-
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -99,4 +91,53 @@ local set = vim.opt -- set options
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
-set.completeopt = menu
+
+-- LSP config
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "tsserver", "gopls", "bashls", "dockerls", "yamlls", "eslint" }
+})
+require'lspconfig'.gopls.setup{}
+require('lspconfig').tsserver.setup({
+    init_options = {
+        preferences = {
+            disableSuggestions = true,
+        },
+    },
+})
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.yamlls.setup{}
+require'lspconfig'.eslint.setup{}
+
+-- Set up nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  window = {},
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-e>'] = cmp.mapping.abort(),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'vsnip' },
+    {
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      }
+    },
+  }, {
+    { name = 'buffer' },
+  })
+})
