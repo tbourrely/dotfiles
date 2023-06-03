@@ -2,6 +2,15 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
 
+   use({
+      "folke/trouble.nvim",
+      config = function()
+          require("trouble").setup {
+              icons = false,
+          }
+      end
+  })
+
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -19,6 +28,8 @@ require('packer').startup(function()
   use 'tpope/vim-sleuth'
   use 'junegunn/vim-easy-align'
   use 'voldikss/vim-floaterm'
+
+  use("tpope/vim-fugitive")
 
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -42,5 +53,8 @@ require('packer').startup(function()
 	  },
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+
+  use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+  use 'nvim-treesitter/nvim-treesitter-context'
 end)
 
