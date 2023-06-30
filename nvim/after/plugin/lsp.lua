@@ -13,6 +13,7 @@ lsp.ensure_installed({
   'bashls',
   'dockerls',
   'yamlls',
+  'html',
 })
 
 lsp.setup()
