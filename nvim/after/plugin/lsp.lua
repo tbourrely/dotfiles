@@ -14,6 +14,7 @@ lsp.ensure_installed({
   'dockerls',
   'yamlls',
   'html',
+  'zls',
 })
 
 lsp.setup()
