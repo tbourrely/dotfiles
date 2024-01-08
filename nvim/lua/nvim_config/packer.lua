@@ -12,6 +12,7 @@ require('packer').startup(function()
   })
 
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "tssm/fairyfloss.vim", as = "fairyfloss" }
 
   use 'fatih/vim-go'
   use 'tpope/vim-commentary'
