@@ -22,6 +22,7 @@ require('packer').startup(function()
   use 'tpope/vim-sleuth'
   use 'junegunn/vim-easy-align'
   use 'voldikss/vim-floaterm'
+  use 'towolf/vim-helm'
 
   use("tpope/vim-fugitive")
 
