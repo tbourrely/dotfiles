@@ -23,6 +23,7 @@ require('packer').startup(function()
   use 'junegunn/vim-easy-align'
   use 'voldikss/vim-floaterm'
   use 'towolf/vim-helm'
+  use 'f-person/git-blame.nvim'
 
   use("tpope/vim-fugitive")
 
