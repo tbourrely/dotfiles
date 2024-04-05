@@ -4,6 +4,10 @@ lsp.preset("recommended")
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,
+    command = "EslintFixAll"
+  })
 end)
 
 lsp.ensure_installed({
