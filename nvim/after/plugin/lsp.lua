@@ -8,6 +8,16 @@ lsp.on_attach(function(client, bufnr)
     buffer = bufnr,
     command = "EslintFixAll"
   })
+
+  vim.keymap.set('n', 'gx', function() 
+    vim.cmd [[split]]
+    vim.lsp.buf.definition()
+  end , {buffer = bufnr})
+
+  vim.keymap.set('n', 'gv', function() 
+    vim.cmd [[vertical botright split]]
+    vim.lsp.buf.definition()
+  end , {buffer = bufnr})
 end)
 
 lsp.ensure_installed({
