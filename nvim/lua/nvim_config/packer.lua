@@ -44,6 +44,8 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-context'
   use "windwp/nvim-ts-autotag"
 
+  use "lukas-reineke/indent-blankline.nvim"
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  requires = {
