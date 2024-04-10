@@ -26,6 +26,7 @@ require('packer').startup(function()
   use 'f-person/git-blame.nvim'
 
   use("tpope/vim-fugitive")
+  use "nvim-lua/plenary.nvim"
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -45,6 +46,12 @@ require('packer').startup(function()
   use "windwp/nvim-ts-autotag"
 
   use "lukas-reineke/indent-blankline.nvim"
+
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
