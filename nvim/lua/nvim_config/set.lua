@@ -9,4 +9,7 @@ set.softtabstop = 4
 set.shiftwidth = 4
 set.autoread = true
 
+set.foldmethod = "expr"
+set.foldexpr = "nvim_treesitter#foldexpr()"
+
 vim.cmd [[set mouse=a]]
