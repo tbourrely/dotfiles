@@ -24,6 +24,9 @@ require('packer').startup(function()
   use 'voldikss/vim-floaterm'
   use 'towolf/vim-helm'
   use 'f-person/git-blame.nvim'
+  use 'mechatroner/rainbow_csv'
+  use "folke/zen-mode.nvim"
+  use "folke/twilight.nvim"
 
   use("tpope/vim-fugitive")
   use "nvim-lua/plenary.nvim"
