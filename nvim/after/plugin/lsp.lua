@@ -20,18 +20,37 @@ lsp.on_attach(function(client, bufnr)
   end , {buffer = bufnr})
 end)
 
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'gopls',
-  'bashls',
-  'dockerls',
-  'yamlls',
-  'html',
-  'helm_ls',
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'tsserver',
+    'eslint',
+    'gopls',
+    'bashls',
+    'dockerls',
+    'yamlls',
+    'html',
+    'helm_ls',
+  },
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
 })
 
-lsp.setup()
+-- lsp.ensure_installed({
+--   'tsserver',
+--   'eslint',
+--   'gopls',
+--   'bashls',
+--   'dockerls',
+--   'yamlls',
+--   'html',
+--   'helm_ls',
+-- })
+
+-- lsp.setup()
 
 local cmp = require('cmp')
 
