@@ -99,4 +99,14 @@ require('packer').startup(function()
   }
 
   use "stevearc/oil.nvim"
+
+  use({
+    "epwalsh/obsidian.nvim",
+    tag = "*",  -- recommended, use latest release instead of latest commit
+    requires = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+      -- see below for full list of optional dependencies 👇
+    }
+  })
 end)

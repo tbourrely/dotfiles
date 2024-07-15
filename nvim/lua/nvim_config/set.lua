@@ -8,6 +8,7 @@ set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
 set.autoread = true
+set.conceallevel = 1
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
