@@ -78,24 +78,25 @@ require('packer').startup(function()
 	  }
   }
 
-
-use {
-  "nvim-neotest/neotest",
-  requires = {
-    "nvim-neotest/nvim-nio",
-    "nvim-lua/plenary.nvim",
-    "antoinemadec/FixCursorHold.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-neotest/neotest-jest",
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-jest",
+    }
   }
-}
 
-use "mfussenegger/nvim-dap"
-use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
-use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
-use {
-  "microsoft/vscode-js-debug",
-  opt = true,
-  run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
-}
+  use "mfussenegger/nvim-dap"
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+  use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+  }
+
+  use "stevearc/oil.nvim"
 end)

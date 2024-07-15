@@ -11,6 +11,6 @@ set.autoread = true
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
-set.foldlevelstart = 3
+set.foldlevelstart = 6
 
 vim.cmd [[set mouse=a]]
