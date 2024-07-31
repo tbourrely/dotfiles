@@ -1,9 +1,8 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
-
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
+
   -- vim.api.nvim_create_autocmd("BufWritePre", {
   --   buffer = bufnr,
   --   command = "EslintFixAll"
@@ -39,28 +38,23 @@ require('mason-lspconfig').setup({
   },
 })
 
--- lsp.ensure_installed({
---   'tsserver',
---   'eslint',
---   'gopls',
---   'bashls',
---   'dockerls',
---   'yamlls',
---   'html',
---   'helm_ls',
--- })
-
--- lsp.setup()
-
-local cmp = require('cmp')
-
 require('luasnip.loaders.from_vscode').lazy_load()
 
+local cmp = require('cmp')
+local cmp_format = require('lsp-zero').cmp_format({details = true})
+
 cmp.setup({
+  formatting = cmp_format,
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
     {name = 'path'},
     {name = 'luasnip'},
-  }
+  },
+  mapping = cmp.mapping.preset.insert(),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
