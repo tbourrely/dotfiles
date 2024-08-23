@@ -13,7 +13,6 @@ require('packer').startup(function()
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  use 'fatih/vim-go'
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use 'raimondi/delimitmate'
@@ -57,6 +56,7 @@ require('packer').startup(function()
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v4.x',
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},
