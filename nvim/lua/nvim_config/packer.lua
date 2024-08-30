@@ -86,6 +86,8 @@ require('packer').startup(function()
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
+      "fredrikaverpil/neotest-golang",
     }
   }
 
