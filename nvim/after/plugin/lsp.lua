@@ -31,6 +31,7 @@ require('mason-lspconfig').setup({
     'html',
     'helm_ls',
     'rust_analyzer',
+    'jedi_language_server',
   },
   handlers = {
     function(server_name)
