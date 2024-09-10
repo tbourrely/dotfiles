@@ -30,6 +30,7 @@ require('mason-lspconfig').setup({
     'yamlls',
     'html',
     'helm_ls',
+    'rust_analyzer',
   },
   handlers = {
     function(server_name)
