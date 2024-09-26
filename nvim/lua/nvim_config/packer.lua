@@ -111,4 +111,6 @@ require('packer').startup(function()
       -- see below for full list of optional dependencies 👇
     }
   })
+
+  use "sindrets/diffview.nvim"
 end)
