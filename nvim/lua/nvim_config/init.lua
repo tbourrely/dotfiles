@@ -10,3 +10,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
+
+vim.o.updatetime = 250
