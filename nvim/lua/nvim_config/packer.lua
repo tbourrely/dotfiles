@@ -54,6 +54,8 @@ require('packer').startup(function()
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
+  use "folke/lsp-colors.nvim"
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v4.x',
