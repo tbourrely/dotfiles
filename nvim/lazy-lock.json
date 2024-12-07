@@ -20,6 +20,7 @@
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "nvim-cmp": { "branch": "main", "commit": "ca4d3330d386e76967e53b85953c170658255ecb" },
   "nvim-dap": { "branch": "master", "commit": "580d6e526358afd0e4bba053e68fd59cf581a161" },
+  "nvim-dap-go": { "branch": "main", "commit": "6aa88167ea1224bcef578e8c7160fe8afbb44848" },
   "nvim-dap-ui": { "branch": "master", "commit": "ffa89839f97bad360e78428d5c740fdad9a0ff02" },
   "nvim-dap-vscode-js": { "branch": "main", "commit": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6" },
   "nvim-lspconfig": { "branch": "master", "commit": "64073cbed0ce23e988160bfd1a148a75b6af94cc" },
