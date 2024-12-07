@@ -1,6 +1,7 @@
-require('nvim_config.packer')
-require('nvim_config.set')
-require('nvim_config.remap')
+-- require('config.packer')
+require('config.lazy')
+require('config.set')
+require('config.remap')
 
 vim.cmd.colorscheme "catppuccin-frappe"
 
