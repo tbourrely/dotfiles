@@ -53,6 +53,7 @@ return {
 					'rust_analyzer',
 					'pylsp',
 					'svelte',
+					'cssls',
 				},
 				handlers = {
 					function(server_name)
