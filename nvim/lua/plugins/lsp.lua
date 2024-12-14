@@ -34,7 +34,11 @@ return {
 					vim.cmd [[vertical botright split]]
 					vim.lsp.buf.definition()
 				end , {buffer = bufnr})
+				vim.keymap.set('n', 'ga', function() 
+					vim.lsp.buf.code_action()
+				end , {buffer = bufnr})
 			end)
+
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
 				ensure_installed = {
