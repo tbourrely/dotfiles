@@ -48,6 +48,7 @@ return {
 					'helm_ls',
 					'rust_analyzer',
 					'pylsp',
+					'svelte',
 				},
 				handlers = {
 					function(server_name)

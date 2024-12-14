@@ -1,5 +1,4 @@
 return {
-	{ 'tpope/vim-commentary' },
 	{ 'tpope/vim-surround' },
 	{ 'raimondi/delimitmate' },
 	{ 'tpope/vim-sleuth' },
