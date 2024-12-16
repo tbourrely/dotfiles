@@ -2,6 +2,7 @@
 require('config.lazy')
 require('config.set')
 require('config.remap')
+require('config.terminal')
 
 vim.cmd.colorscheme "catppuccin-frappe"
 
