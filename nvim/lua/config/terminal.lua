@@ -28,3 +28,7 @@ vim.keymap.set("n", "<leader>vt", function()
   vim.cmd.term()
   vim.cmd.wincmd("L")
 end)
+
+vim.keymap.set("x", '<leader>p', '"_dP')
+vim.keymap.set("n", '<leader>d', '"_d')
+vim.keymap.set("n", '<leader>D', '"_D')
