@@ -10,9 +10,11 @@ vim.api.nvim_create_autocmd("TermEnter", {
 
 vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-    vim.cmd("startinsert")
+    if vim.startswith(vim.api.nvim_buf_get_name(0), "term://") then
+      vim.opt.number = false
+      vim.opt.relativenumber = false
+      vim.cmd("startinsert")
+    end
   end
 })
 
