@@ -11,7 +11,6 @@ return {
 
 			-- Autocompletion
 			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
 			{'hrsh7th/cmp-path'},
 			{'saadparwaiz1/cmp_luasnip'},
 			{'hrsh7th/cmp-nvim-lsp'},
@@ -67,7 +66,6 @@ return {
 				formatting = lsp.cmp_format(),
 				sources = {
 					{name = 'nvim_lsp'},
-					{name = 'buffer'},
 					{name = 'path'},
 					{name = 'luasnip'},
 				},
