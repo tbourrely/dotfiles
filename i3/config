@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $HOME/.local/kitty.app/bin/kitty
+bindsym $mod+Return exec /usr/bin/ghostty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,3 +175,6 @@ default_border pixel 0
 exec --no-startup-id feh --bg-fill --randomize $HOME/.config/i3/background/*
 
 bindsym $mod+Control+l exec i3lock
+
+# disable xorg power management feature
+exec --no-startup-id xset s off -dpms
