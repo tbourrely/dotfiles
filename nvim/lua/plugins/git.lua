@@ -7,4 +7,5 @@ return {
 	},
 	{ 'f-person/git-blame.nvim' },
 	{ "sindrets/diffview.nvim" },
+	{ "tpope/vim-fugitive" },
 }
