@@ -30,7 +30,7 @@ return {
     { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
     { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "<leader>tt", function() Snacks.terminal("zsh") end, desc = "Toggle Terminal" },
+    { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
     {
