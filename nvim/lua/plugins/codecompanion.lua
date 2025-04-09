@@ -55,6 +55,16 @@ return {
 				},
 				inline = {
 					adapter = "ovhcloud_ai_endpoint",
+					keymaps = {
+						accept_change = {
+							modes = { n = "ga" },
+							description = "Accept the suggested change",
+						},
+						reject_change = {
+							modes = { n = "gu" },
+							description = "Reject the suggested change",
+						},
+					},
 				},
 			},
 			opts = {
