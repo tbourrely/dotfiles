@@ -1,8 +1,33 @@
+ollama_model = "codellama:7b" -- the ollama model to run
+
 return {
 	{
 		"olimorris/codecompanion.nvim",
 		enabled = function()
 			return os.getenv("CODECOMPANION_AI_ENDPOINTS_API_KEY") ~= nil or os.getenv("CODECOMPANION_OLLAMA") ~= nil
+		end,
+		init = function()
+			local is_already_running_fn = function()
+				local handle = io.popen("ollama ps | grep -c " .. ollama_model)
+				local result = handle:read("*a")
+				handle:close()
+				return tonumber(result)
+			end
+
+			local notify = function(msg)
+				vim.defer_fn(function()
+					vim.notify(msg)
+				end, 500)
+			end
+
+			if os.getenv("CODECOMPANION_OLLAMA") ~= nil then
+				if is_already_running_fn() == 1 then
+					notify("ollama " .. ollama_model .. " is already running")
+				else
+					os.execute("ollama run " .. ollama_model .. " ''" )
+					notify("codellama started")
+				end
+			end
 		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -36,7 +61,7 @@ return {
 						name = adapter,
 						schema = {
 							model = {
-								default = "codellama:7b",
+								default = ollama_model,
 							},
 							num_ctx = {
 								default = 16384,
