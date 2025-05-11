@@ -13,6 +13,7 @@ return {
 					'eslint',
 					'gopls',
 					'bashls',
+					'golangci_lint_ls',
 					'dockerls',
 					'yamlls',
 					'html',
