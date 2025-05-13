@@ -71,6 +71,11 @@ return {
 				vim.lsp.buf.code_action()
 			end, { buffer = bufnr })
 
+			-- find references
+			vim.keymap.set('n', 'gr', function()
+				vim.lsp.buf.references()
+			end, { buffer = bufnr })
+
 			-- make lua_ls aware of vim specifics
 			vim.lsp.config('lua_ls', {
 				on_init = function(client)
