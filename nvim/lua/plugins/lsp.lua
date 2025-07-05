@@ -66,6 +66,9 @@ return {
 				vim.lsp.buf.definition()
 			end, { buffer = bufnr })
 
+			-- rename
+			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
+
 			-- trigger code actions
 			vim.keymap.set('n', 'ga', function()
 				vim.lsp.buf.code_action()
