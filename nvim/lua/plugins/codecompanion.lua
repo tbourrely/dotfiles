@@ -24,7 +24,7 @@ return {
 				if is_already_running_fn() == 1 then
 					notify("ollama " .. ollama_model .. " is already running")
 				else
-					os.execute("ollama run " .. ollama_model .. " ''" )
+					os.execute("ollama run " .. ollama_model .. " ''")
 					notify("codellama started")
 				end
 			end
@@ -42,7 +42,7 @@ return {
 				adapters[active_adapter] = function()
 					return require("codecompanion.adapters").extend("openai_compatible", {
 						env = {
-							url = "https://llama-3-3-70b-instruct.endpoints.kepler.ai.cloud.ovh.net/api/openai_compat",
+							url = "https://oai.endpoints.kepler.ai.cloud.ovh.net",
 							api_key = "CODECOMPANION_AI_ENDPOINTS_API_KEY",
 						},
 						schema = {
@@ -126,8 +126,8 @@ return {
 		end,
 		keys = {
 			{ '<leader>ct', "<cmd>CodeCompanionChat Toggle<cr>", desc = "toggle chat" },
-			{ 'ga', "<cmd>CodeCompanionChat Add<cr>", mode = {"v"}, desc = "add code to chat" },
-			{ '<leader>ca', "<cmd>CodeCompanionActions<cr>", mode = {"n", "v"}, desc = "toggle actions" },
+			{ 'ga',         "<cmd>CodeCompanionChat Add<cr>",    mode = { "v" },      desc = "add code to chat" },
+			{ '<leader>ca', "<cmd>CodeCompanionActions<cr>",     mode = { "n", "v" }, desc = "toggle actions" },
 		},
 	},
 }
