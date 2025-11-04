@@ -1,7 +1,7 @@
 return {
 	{
 		'mfussenegger/nvim-lint',
-		config = function() 
+		config = function()
 			require('lint').linters_by_ft = {
 				javascript = { "eslint" },
 				go = { "golangcilint" },

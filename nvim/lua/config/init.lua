@@ -2,6 +2,7 @@ require('config.lazy')
 require('config.set')
 require('config.remap')
 require('config.terminal')
+require('config.filetypes')
 
 vim.cmd("colorscheme rose-pine")
 

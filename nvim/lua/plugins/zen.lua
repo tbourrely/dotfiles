@@ -1,9 +1,8 @@
 return {
-	{ "folke/twilight.nvim" },
 	{
 		"folke/zen-mode.nvim",
 		opts = {
-			plugins = { 
+			plugins = {
 				tmux = { enabled = true }
 			}
 		}
