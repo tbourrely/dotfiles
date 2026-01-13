@@ -9,6 +9,9 @@ return {
 		vim.g['copilot_filetypes'] = {
 			['*'] = false,
 			['go'] = true,
+			['typescript'] = true,
+			['typescriptreact'] = true,
+			['javascript'] = true,
 			['yaml'] = true,
 			['markdown'] = true,
 		}

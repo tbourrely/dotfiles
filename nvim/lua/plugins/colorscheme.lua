@@ -1,10 +1,17 @@
 return {
-	{"catppuccin/nvim", name = "catppuccin"},
-	{ 
-		"rose-pine/neovim", 
-		name = "rose-pine",
+	{
+		"Mofiqul/dracula.nvim",
+		name = "dracula",
 		config = function()
-			vim.cmd("colorscheme rose-pine-moon")
+			vim.cmd("colorscheme dracula")
 		end
 	}
+	-- { "catppuccin/nvim", name = "catppuccin" },
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme rose-pine-moon")
+	-- 	end
+	-- }
 }

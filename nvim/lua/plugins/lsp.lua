@@ -4,9 +4,18 @@ return {
 		dependencies = {
 			"mason-org/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+			"jay-babu/mason-nvim-dap.nvim"
 		},
 		config = function()
 			require("mason").setup()
+			require("mason-nvim-dap").setup({
+				automatic_installation = true,
+				ensure_installed = {
+					-- Due to a bug with the latest version of vscode-js-debug, need to lock to specific version
+					-- See: https://github.com/mxsdev/nvim-dap-vscode-js/issues/58#issuecomment-2213230558
+					"js@v1.76.1",
+				},
+			})
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					'ts_ls',
@@ -51,7 +60,21 @@ return {
 
 			-- jump to definition
 			vim.keymap.set('n', 'gd', function()
-				vim.lsp.buf.definition()
+				vim.lsp.buf.definition({
+					on_list = function(options)
+						if options.items and #options.items > 1 then
+							-- Jump to first item. You can do whatever you want here, such as filtering out React d.ts.
+							vim.fn.setqflist({}, " ", options) -- Close quicifix list
+							vim.cmd("cfirst") -- Jump to first
+						elseif options.items and #options.items == 1 then
+							local item = options.items[1]
+							vim.fn.setqflist({ item }, "r")
+							vim.cmd("cfirst")
+						else
+							print("No definition found")
+						end
+					end,
+				})
 			end, { buffer = bufnr })
 
 			-- jump to definition in a split
