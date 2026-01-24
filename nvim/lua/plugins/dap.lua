@@ -58,11 +58,6 @@ return {
 		end
 	},
 	{
-		"microsoft/vscode-js-debug",
-		lazy = true,
-		build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-	},
-	{
 		"leoluz/nvim-dap-go",
 		dependencies = { "mfussenegger/nvim-dap" },
 		config = function()
