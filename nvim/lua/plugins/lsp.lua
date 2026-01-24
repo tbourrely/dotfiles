@@ -1,3 +1,18 @@
+local on_list_handler = function(options)
+	print(#options.items)
+	if options.items and #options.items > 1 then
+		-- Jump to first item. You can do whatever you want here, such as filtering out React d.ts.
+		vim.fn.setqflist({}, " ", options) -- Close quicifix list
+		vim.cmd("cfirst")            -- Jump to first
+	elseif options.items and #options.items == 1 then
+		local item = options.items[1]
+		vim.fn.setqflist({ item }, "r")
+		vim.cmd("cfirst")
+	else
+		print("No definition found")
+	end
+end
+
 return {
 	{
 		"mason-org/mason.nvim",
@@ -120,21 +135,9 @@ return {
 		keys = {
 			{
 				"gd",
-				function() 
+				function()
 					vim.lsp.buf.definition({
-						on_list = function(options)
-							if options.items and #options.items > 1 then
-								-- Jump to first item. You can do whatever you want here, such as filtering out React d.ts.
-								vim.fn.setqflist({}, " ", options) -- Close quicifix list
-								vim.cmd("cfirst") -- Jump to first
-							elseif options.items and #options.items == 1 then
-								local item = options.items[1]
-								vim.fn.setqflist({ item }, "r")
-								vim.cmd("cfirst")
-							else
-								print("No definition found")
-							end
-						end,
+						on_list = on_list_handler,
 					})
 				end
 			},
@@ -142,14 +145,18 @@ return {
 				"gx",
 				function()
 					vim.cmd [[split]]
-					vim.lsp.buf.definition()
+					vim.lsp.buf.definition({
+						on_list = on_list_handler,
+					})
 				end
 			},
 			{
 				"gv",
 				function()
 					vim.cmd [[vertical botright split]]
-					vim.lsp.buf.definition()
+					vim.lsp.buf.definition({
+						on_list = on_list_handler,
+					})
 				end
 			},
 			{
