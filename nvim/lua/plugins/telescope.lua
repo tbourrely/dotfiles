@@ -14,11 +14,10 @@ return {
 	opts = {
 		defaults = {
 			path_display = { "smart" },
-			-- layout_strategy = "horizontal",
+			file_ignore_patterns = { "^.git/" }
 		},
 		pickers = {
 			find_files = {
-				-- theme = "dropdown",
 				previewer = false,
 			}
 		}

@@ -42,66 +42,6 @@ return {
 				underline = true
 			})
 
-			-- show diagnostic message on hover
-			vim.api.nvim_create_autocmd("CursorHold", {
-				buffer = bufnr,
-				callback = function()
-					local opts = {
-						focusable = false,
-						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-						border = 'rounded',
-						source = 'always',
-						prefix = ' ',
-						scope = 'cursor',
-					}
-					vim.diagnostic.open_float(nil, opts)
-				end
-			})
-
-			-- jump to definition
-			vim.keymap.set('n', 'gd', function()
-				vim.lsp.buf.definition({
-					on_list = function(options)
-						if options.items and #options.items > 1 then
-							-- Jump to first item. You can do whatever you want here, such as filtering out React d.ts.
-							vim.fn.setqflist({}, " ", options) -- Close quicifix list
-							vim.cmd("cfirst") -- Jump to first
-						elseif options.items and #options.items == 1 then
-							local item = options.items[1]
-							vim.fn.setqflist({ item }, "r")
-							vim.cmd("cfirst")
-						else
-							print("No definition found")
-						end
-					end,
-				})
-			end, { buffer = bufnr })
-
-			-- jump to definition in a split
-			vim.keymap.set('n', 'gx', function()
-				vim.cmd [[split]]
-				vim.lsp.buf.definition()
-			end, { buffer = bufnr })
-
-			-- jump to defintion in a vertical split
-			vim.keymap.set('n', 'gv', function()
-				vim.cmd [[vertical botright split]]
-				vim.lsp.buf.definition()
-			end, { buffer = bufnr })
-
-			-- rename
-			vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
-
-			-- trigger code actions
-			vim.keymap.set('n', 'ga', function()
-				vim.lsp.buf.code_action()
-			end, { buffer = bufnr })
-
-			-- find references
-			vim.keymap.set('n', 'gr', function()
-				vim.lsp.buf.references()
-			end, { buffer = bufnr })
-
 			-- make lua_ls aware of vim specifics
 			vim.lsp.config('lua_ls', {
 				on_init = function(client)
@@ -175,4 +115,55 @@ return {
 		opts_extend = { "sources.default" }
 	},
 	{ 'folke/lsp-colors.nvim' },
+	{
+		'neovim/nvim-lspconfig',
+		keys = {
+			{
+				"gd",
+				function() 
+					vim.lsp.buf.definition({
+						on_list = function(options)
+							if options.items and #options.items > 1 then
+								-- Jump to first item. You can do whatever you want here, such as filtering out React d.ts.
+								vim.fn.setqflist({}, " ", options) -- Close quicifix list
+								vim.cmd("cfirst") -- Jump to first
+							elseif options.items and #options.items == 1 then
+								local item = options.items[1]
+								vim.fn.setqflist({ item }, "r")
+								vim.cmd("cfirst")
+							else
+								print("No definition found")
+							end
+						end,
+					})
+				end
+			},
+			{
+				"gx",
+				function()
+					vim.cmd [[split]]
+					vim.lsp.buf.definition()
+				end
+			},
+			{
+				"gv",
+				function()
+					vim.cmd [[vertical botright split]]
+					vim.lsp.buf.definition()
+				end
+			},
+			{
+				"<leader>r",
+				vim.lsp.buf.rename
+			},
+			{
+				"ga",
+				vim.lsp.buf.code_action
+			},
+			{
+				"gr",
+				vim.lsp.buf.references
+			}
+		},
+	}
 }
