@@ -1,7 +1,7 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	lazy = false,
-	version = '0.1.5',
+	version = '0.2.1',
 	dependencies = { { 'nvim-lua/plenary.nvim' } },
 	keys =
 	{
@@ -13,7 +13,7 @@ return {
 	},
 	opts = {
 		defaults = {
-			path_display = { "smart" },
+			path_display = { "truncate" },
 			file_ignore_patterns = { "^.git/" }
 		},
 		pickers = {

@@ -1,3 +1,3 @@
 return {
-	{ "shortcuts/no-neck-pain.nvim", version = "*", opts = { width = 170, autocmds = { enableOnVimEnter = true } } },
+	{ "shortcuts/no-neck-pain.nvim", version = "*", opts = { width = 150, autocmds = { enableOnVimEnter = true } } },
 }
