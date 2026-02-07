@@ -1,0 +1,42 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-c": "workspace::ToggleCenteredLayout",
+      "g v": "editor::GoToDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+    },
+  },
+  {
+    "context": "Editor || Terminal || ProjectPanel",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-t": "workspace::ToggleBottomDock",
+    },
+  },
+  {
+    "context": "Editor || ProjectPanel || Workspace",
+    "bindings": {
+      "ctrl-f": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "escape": "project_panel::ToggleFocus",
+      "enter": "project_panel::Open",
+      "o": "project_panel::NewDirectory",
+      "a": "project_panel::NewFile",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "d": "project_panel::Delete",
+      "l": "project_panel::ExpandSelectedEntry",
+      "h": "project_panel::CollapseSelectedEntry",
+    },
+  },
+]
