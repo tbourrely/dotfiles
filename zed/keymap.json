@@ -14,7 +14,7 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-t": "terminal_panel::Toggle",
     },
   },
   {
