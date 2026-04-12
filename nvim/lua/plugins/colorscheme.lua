@@ -6,7 +6,13 @@ return {
 			vim.cmd("colorscheme dracula")
 		end
 	}
-	-- { "catppuccin/nvim", name = "catppuccin" },
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme catppuccin-latte")
+	-- 	end
+	-- },
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	name = "rose-pine",

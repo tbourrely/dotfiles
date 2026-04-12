@@ -1,14 +1,16 @@
 return {
 	{ 'tpope/vim-surround' },
-	{ 'raimondi/delimitmate' },
-	{ 'tpope/vim-sleuth' },
-	{ 'junegunn/vim-easy-align' },
+	{ 'm4xshen/autoclose.nvim' },
 	{
-		"lukas-reineke/indent-blankline.nvim",
+		'nvim-mini/mini.indentscope',
+		version = '*',
 		config = function()
-			require("ibl").setup {
-				indent = { char = ">" }
-			}
+			require('mini.indentscope').setup({
+				draw = { animation = require('mini.indentscope').gen_animation.none() }
+			})
 		end
 	},
+	-- auto indent guessing magic
+	-- { 'tpope/vim-sleuth' },
+	-- { 'junegunn/vim-easy-align' },
 }

@@ -19,22 +19,14 @@ return {
 		dependencies = {
 			"mason-org/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
-			"jay-babu/mason-nvim-dap.nvim"
 		},
 		config = function()
 			require("mason").setup()
-			require("mason-nvim-dap").setup({
-				automatic_installation = true,
-				ensure_installed = {
-					-- Due to a bug with the latest version of vscode-js-debug, need to lock to specific version
-					-- See: https://github.com/mxsdev/nvim-dap-vscode-js/issues/58#issuecomment-2213230558
-					"js@v1.76.1",
-				},
-			})
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					'ts_ls',
+					'tsgo',
 					'eslint',
+					'biome',
 					'gopls',
 					'bashls',
 					'golangci_lint_ls',
@@ -52,9 +44,25 @@ return {
 			})
 
 			vim.diagnostic.config({
-				virtual_text = true,
-				signs = true,
+				virtual_text = false,
+				signs = false,
 				underline = true
+			})
+
+			-- show diagnostic message on hover
+			vim.api.nvim_create_autocmd("CursorHold", {
+				buffer = bufnr,
+				callback = function()
+					local opts = {
+						focusable = false,
+						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+						border = 'rounded',
+						source = 'always',
+						prefix = ' ',
+						scope = 'cursor',
+					}
+					vim.diagnostic.open_float(nil, opts)
+				end
 			})
 
 			-- make lua_ls aware of vim specifics
@@ -72,11 +80,7 @@ return {
 
 					client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
 						runtime = {
-							-- Tell the language server which version of Lua you're using (most
-							-- likely LuaJIT in the case of Neovim)
 							version = 'LuaJIT',
-							-- Tell the language server how to find Lua modules same way as Neovim
-							-- (see `:h lua-module-load`)
 							path = {
 								'lua/?.lua',
 								'lua/?/init.lua',
@@ -87,18 +91,6 @@ return {
 							checkThirdParty = false,
 							library = {
 								vim.env.VIMRUNTIME
-								-- Depending on the usage, you might want to add additional paths
-								-- here.
-								-- '${3rd}/luv/library'
-								-- '${3rd}/busted/library'
-
-								-- Or pull in all of 'runtimepath'.
-								-- NOTE: this is a lot slower and will cause issues when working on
-								-- your own configuration.
-								-- See https://github.com/neovim/nvim-lspconfig/issues/3189
-								-- library = {
-								--   vim.api.nvim_get_runtime_file('', true),
-								-- }
 							}
 						},
 						diagnostics = {
@@ -129,7 +121,6 @@ return {
 		},
 		opts_extend = { "sources.default" }
 	},
-	{ 'folke/lsp-colors.nvim' },
 	{
 		'neovim/nvim-lspconfig',
 		keys = {
