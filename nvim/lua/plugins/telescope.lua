@@ -27,7 +27,10 @@ return {
 				previewer = false,
 			},
 			diagnostics = {
-				layout_strategy = "vertical"
+				layout_strategy = "horizontal"
+			},
+			live_grep = {
+				layout_strategy = "horizontal"
 			}
 		}
 	},

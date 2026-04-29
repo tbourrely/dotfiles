@@ -5,4 +5,5 @@ return {
 			vim.g['gitgutter_sign_priority'] = 0
 		end
 	},
+	{ 'tpope/vim-fugitive' }
 }
