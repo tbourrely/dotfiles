@@ -5,7 +5,7 @@ return {
   ---@type snacks.Config
   opts = {
     terminal = { enabled = true },
-    lazygit = { enabled = false },
+    lazygit = { enabled = true },
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     notifier = {
@@ -24,13 +24,15 @@ return {
   keys = {
     { "<leader>.",  function() Snacks.scratch() end,                 desc = "Toggle Scratch Buffer" },
     { "<leader>S",  function() Snacks.scratch.select() end,          desc = "Select Scratch Buffer" },
+	{ "<leader>z",  function() Snacks.zen() end,                     desc = "Zen mode" },
     { "<leader>n",  function() Snacks.notifier.show_history() end,   desc = "Notification History" },
     { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
     { "<leader>cR", function() Snacks.rename.rename_file() end,      desc = "Rename File" },
     { "<leader>gB", function() Snacks.gitbrowse() end,               desc = "Git Browse" },
     { "<leader>gb", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
     { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
-    { "<leader>tt", function() Snacks.terminal("fish") end,          desc = "Toggle Terminal" },
+    { "<leader>tt", function() Snacks.terminal() end,                desc = "Toggle Terminal" },
+    { "<leader>lt", function() Snacks.lazygit() end,                 desc = "Toggle Lazygit" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",           mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",           mode = { "n", "t" } },
     {
