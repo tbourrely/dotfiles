@@ -24,7 +24,8 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					'tsgo',
+					-- 'tsgo',
+					'vtsls',
 					'eslint',
 					'biome',
 					'gopls',
